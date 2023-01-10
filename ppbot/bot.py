@@ -73,9 +73,6 @@ async def reveal_click(chat: Chat, cq: CallbackQuery, match):
     if not game:
         return await cq.answer(text="No such game")
 
-    if cq.src["from"]["id"] != game.initiator["id"]:
-        return await cq.answer(text="{} is available only for initiator".format(operation))
-
     current_text = game.get_text()
     if operation in (Game.OP_RESTART, Game.OP_RESTART_NEW):
         game.restart()
